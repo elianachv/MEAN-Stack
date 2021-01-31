@@ -1,0 +1,32 @@
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #0d6efd;
+}
+
+.table{
+    width: 95%;
+    margin: 15px auto;
+}
+
+th, td {
+    text-align: center;
+}
+
+.btn-opciones {
+    margin: 0 10px;
+}
+
+form{
+    width: 100%;
+    margin: 0;
+}
+.container-form {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+}

@@ -5,12 +5,15 @@ const Estudiante = require('../model/Estudiante');
  * @param {*} res => respuesta
  */
 function crearEstudiante(req, res) {
+    console.log('Alcanzo a llegar a la creacion');
     var user = new Estudiante();
     //formulario recibido
     var params = req.body;
+    // console.log('Esto es lo que se recibio: ' + req.body.nombre);
+
 
     user.nombre = params.nombre;
-    user.apellidos = params.apellido;
+    user.apellidos = params.apellidos;
     user.edad = params.edad;
     user.direccion = params.direccion;
     user.correo = params.correo;
@@ -24,18 +27,24 @@ function crearEstudiante(req, res) {
                 statusCode: 500,
                 message: "Error en servidor"
             });
+            console.log('Error total: ' + error.message);
+
         } else {
             if (!userCreated) {
                 res.status(400).send({
                     statusCode: 400,
                     message: "Error al insertar el usuario"
+
                 });
+                console.log('No se pudo crear el usuario');
+
             } else {
                 res.status(200).send({
                     statusCode: 200,
-                    message: "Usuario creaod con exito",
+                    message: "Usuario creado con exito",
                     dataUser: userCreated
                 });
+                console.log('Creacion de usuario exitosa');
             }
 
         }
@@ -77,25 +86,31 @@ function eliminadrEstudiante(req, res) {
     //formulario recibido
     //var parametros = req.body;
     var idEstudiante = req.params.idEstudiante;
-
+    console.log('Procesando eliminación');
     Estudiante.findByIdAndDelete(idEstudiante, (error, estudianteDeleted) => {
         if (error) {
             res.status(500).send({
                 statusCode: 500,
-                message: "Error en el servidor: "+error
+                message: "Error en el servidor: " + error
             });
+            console.log('Erro 500');
+
         } else {
             if (!estudianteDeleted) {
                 res.status(400).send({
                     statusCode: 400,
                     message: "Error al eliminar estudiante"
                 });
+                console.log('Erro 400');
+
             } else {
                 res.status(200).send({
                     statusCode: 200,
                     message: "Estudiante eliminado con éxito",
                     dataUser: estudianteDeleted
                 });
+                console.log('Elimancion exitos de: '+estudianteDeleted);
+
             }
 
         }
@@ -104,14 +119,14 @@ function eliminadrEstudiante(req, res) {
 
 }
 
-function mostrarEstudiante(req, res){
+function mostrarEstudiante(req, res) {
     var idEstudiante = req.params.idEstudiante;
-    Estudiante.findById(idEstudiante, (error, estudianteActual)=>{
+    Estudiante.findById(idEstudiante, (error, estudianteActual) => {
 
         if (error) {
             res.status(500).send({
                 statusCode: 500,
-                message: "Error en el servidor: "+error
+                message: "Error en el servidor: " + error
             });
         } else {
             if (!estudianteActual) {
@@ -132,26 +147,61 @@ function mostrarEstudiante(req, res){
     })
 }
 
-function listarEstudiantes(req, res){
-    Estudiante.find({},(error, allUsers) => {
+function buscarApellido(req, res) {
+    var apellidos = req.params.apellidos;
+
+    Estudiante.find({ 'apellidos': apellidos }, (error, estudiantes) => {
 
         if (error) {
             res.status(500).send({
                 statusCode: 500,
-                message: "Error en el servidor: "+error
+                message: "Error en el servidor: " + error
             });
+        } else {
+            if (!estudiantes) {
+                res.status(400).send({
+                    statusCode: 400,
+                    message: "No se encontro ningun estudiante con esos apellidos"
+                });
+            } else {
+                res.status(200).send({
+                    statusCode: 200,
+                    message: "Estudiantes mostrados con éxito",
+                    estudiantes: estudiantes
+                });
+            }
+
+        }
+
+    });
+}
+
+function listarEstudiantes(req, res) {
+    console.log('Alcanzo el listado de estudiantes');
+    Estudiante.find({}, (error, allUsers) => {
+        if (error) {
+            res.status(500).send({
+                statusCode: 500,
+                message: "Error en el servidor: " + error
+            });
+            console.log('Error 500');
+
         } else {
             if (!allUsers) {
                 res.status(400).send({
                     statusCode: 400,
                     message: "Error al mostrar ESTUDIANTES"
                 });
+                console.log('Error 400');
+
             } else {
                 res.status(200).send({
                     statusCode: 200,
                     message: "Estudiantes mostrados con éxito",
                     allUser: allUsers
                 });
+                console.log('Todo bien: ' + allUsers);
+
             }
 
         }
@@ -164,5 +214,6 @@ module.exports = {
     modificarEstudiante,
     eliminadrEstudiante,
     mostrarEstudiante,
-    listarEstudiantes
+    listarEstudiantes,
+    buscarApellido
 }

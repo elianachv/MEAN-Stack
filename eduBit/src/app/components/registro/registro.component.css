@@ -1,0 +1,26 @@
+.card{
+    width: 65%;
+    padding: 15px;
+    margin: 15px;
+    border: 2px #0d6efd solid;
+}
+
+.card-header{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+    color: #0d6efd;
+}
+
+.form-label{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+button{
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 10px;
+}

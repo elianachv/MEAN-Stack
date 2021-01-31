@@ -1,0 +1,16 @@
+.navbar-brand {
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.navbar-nav {
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.navbar {
+    margin-bottom: 25px;
+}

@@ -1,0 +1,43 @@
+<div class="card mx-auto container">
+    <div class="card-header">
+        Modificar Estudiante
+    </div>
+    <div class="card-body">
+        <form #formularioActualizacion="ngForm" (ngSubmit)="modificar()" class="row g-2">
+            <div class="col-6">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="inputNombre" #inputNombre="ngModel"
+                    [(ngModel)]="estudianteStorage.nombre">
+            </div>
+            <div class="col-6">
+                <label for="inputApellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidos" name="inputApellidos" #inputApellidos="ngModel"
+                    [(ngModel)]="estudianteStorage.apellidos" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputEmail" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="inputEmail" name="inputCorreo" #inputCorreo="ngModel"
+                    [(ngModel)]="estudianteStorage.correo" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputTelefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="inputTelefono" name="inputTelefono" #inputTelefono="ngModel"
+                    [(ngModel)]="estudianteStorage.telefono" placeholder="" ngModel>
+            </div>
+            <div class="col-12">
+                <label for="inputDireccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="inputDireccion" name="inputDireccion" #inputDireccion="ngModel"
+                    [(ngModel)]="estudianteStorage.direccion" placeholder="" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputEdad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="inputEdad" name="inputEdad" #inputEdad="ngModel"
+                    [(ngModel)]="estudianteStorage.edad" placeholder="" ngModel>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>

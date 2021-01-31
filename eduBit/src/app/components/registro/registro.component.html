@@ -1,0 +1,43 @@
+<div class="card mx-auto container">
+    <div class="card-header">
+        Registrar Estudiante
+    </div>
+    <div class="card-body">
+        <form #formularioRegistro="ngForm" (ngSubmit)="registrar()" class="row g-2">
+            <div class="col-6">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="inputNombre" #inputNombre="ngModel"
+                    [(ngModel)]="nuevoEstudiante.nombre" placeholder="" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputApellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidos" name="inputApellidos" #inputApellidos="ngModel"
+                    [(ngModel)]="nuevoEstudiante.apellidos" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputEmail" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="inputEmail" name="inputCorreo" #inputCorreo="ngModel"
+                    [(ngModel)]="nuevoEstudiante.correo" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputTelefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="inputTelefono" name="inputTelefono" #inputTelefono="ngModel"
+                    [(ngModel)]="nuevoEstudiante.telefono" placeholder="" ngModel>
+            </div>
+            <div class="col-12">
+                <label for="inputDireccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="inputDireccion" name="inputDireccion" #inputDireccion="ngModel"
+                    [(ngModel)]="nuevoEstudiante.direccion" placeholder="" ngModel>
+            </div>
+            <div class="col-6">
+                <label for="inputEdad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="inputEdad" name="inputEdad" #inputEdad="ngModel"
+                    [(ngModel)]="nuevoEstudiante.edad" placeholder="" ngModel>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

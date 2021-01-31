@@ -16,15 +16,32 @@ api.get('/saludar', (rel, rest)=>{
 
 */
 
+/*
+api.use((req, res, next) => {
+    console.log('Se estan configurando las cabeceras ... ');
+    res.header("Content-Type", "application/json");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET , PUT , POST , DELETE");
+    res.header("Access-Control-Allow-Headers", 'true');
+    //res.header('Access-Control-Allow-Credentials', 'true');
+    next(); // Important
+});
+*/
+
+
 //Insertar un nuevo estudiante
-api.post('/', EstudianteController.crearEstudiante);
+api.post('/crear', EstudianteController.crearEstudiante);
 //Listar todos los estudiantes
 api.get('/estudiantes', EstudianteController.listarEstudiantes);
+//Listar estudiantes filtrados por apellido
+api.get('/estudiantes/:apellidos', EstudianteController.buscarApellido);
 //Mostrar un estudiante específico
 api.get('/:idEstudiante', EstudianteController.mostrarEstudiante);
 //Modificar un estudiante 
-api.put('/:idEstudiante', EstudianteController.modificarEstudiante);
+api.put('/actualizar/:idEstudiante', EstudianteController.modificarEstudiante);
 //Eliminar un estudiante
-api.delete('/:idEstudiante', EstudianteController.eliminadrEstudiante);
+api.delete('/eliminar/:idEstudiante', EstudianteController.eliminadrEstudiante);
+
+
 
 module.exports = api;
