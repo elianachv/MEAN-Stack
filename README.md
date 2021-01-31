@@ -15,12 +15,24 @@ Es la API (una sala que expone información y servicios para ser consumidos).
 ### userRoutes.js
 Archivo que expone las rutas. Crea las rutas para redireccionar a las diferentes url de la app
 
-
 ## Controladores
 Funciones que interactuan para dar vida al modelo
 
 ## Modelo
 Esquema de los objetos
+
+## Frontend con Angular
+### Componentes
+Los componetes son la interfaz grafica con la que interactua el usuario
+
+### Servicios
+Son el puente entre la interfaz gráfica y la API del servidor implementado en express para el acceso a los datos de la base de datos
+
+### Modelos 
+Son clases que estructuran los objetos que se enviaran al servidor
+
+### Enrutamiento
+El enrutamiento de angular solo afecta el comportamiento de las vistas y no las conexiones propias del sevidor que contiene la api
 
 
 
